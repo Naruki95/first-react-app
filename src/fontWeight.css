@@ -1,0 +1,34 @@
+.lighter{
+  font-weight: lighter;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.normal{
+  font-weight: normal;
+}
+
+.small {
+  font-size: small;
+}
+
+.medium {
+  font-size: medium;
+}
+
+.larger {
+  font-size: larger;
+}
+
+/* display */
+
+.side {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row{
+  display: block;
+}

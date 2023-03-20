@@ -1,0 +1,27 @@
+.color {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  border: 1px solid black;
+}
+
+
+.text-red {
+  background-color: darkred;
+}
+
+.text-green {
+  background-color: lightgreen;
+}
+
+.text-blue {
+  background-color: lightseagreen;
+}
+
+.text-gray {
+  background-color: gray;
+}
+
+.text-black {
+  background-color: black;
+}

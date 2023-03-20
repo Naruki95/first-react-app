@@ -1,0 +1,22 @@
+.sub-article {
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.sub-article-height-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-article-height-center textarea{
+  text-align: center;
+}
+
+.sub-article-height-center p {
+  text-align: center;
+}
+
+.sub-article-width-center{
+  margin: 0 auto;
+}

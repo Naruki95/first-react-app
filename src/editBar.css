@@ -1,0 +1,35 @@
+.editBarTemplate{
+  display: flex;
+  width: 130px;
+  flex-wrap: wrap;
+}
+
+.block-colors {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: white;
+  align-self: center;
+}
+
+.main-content{
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: white;
+}
+
+.side-elements{
+  display: flex;
+}
+
+.ediBarPosition{
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
