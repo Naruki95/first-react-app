@@ -16,10 +16,20 @@ const dumpState = { "navBar": [{ "id": 1, "articleId": 2, "text": "My Story", "t
 const WebsiteContext = createContext(null);
 const WebsiteDispatchContext = createContext(null)
 
-
+function storage() {
+  if(window.localStorage.length === 0)
+  {
+    return dumpState
+  }
+  else
+  {
+    return JSON.parse(window.localStorage.template)
+  }
+}
 
 export function AppContext({ children }) {
-  const [elements, dispatch] = useReducer(websiteReducer, dumpState)
+  const state = storage()
+  const [elements, dispatch] = useReducer(websiteReducer, state)
   return (
     <WebsiteContext.Provider value={elements}>
       <WebsiteDispatchContext.Provider value={dispatch}>
@@ -40,11 +50,17 @@ export function useWebsiteDispatchContext() {
 function websiteReducer(elements, action) {
   switch (action.type) {
 
+    case 'saveUserTemplate': {
+      window.localStorage.setItem('template', JSON.stringify(elements))
+      return elements
+    }
+
     case 'template':{
       return action.template
     }
 
     case 'initOldTemplate': {
+      window.localStorage.clear()
       return {
         ...dumpState,
         editBar: {type: null}
@@ -52,7 +68,6 @@ function websiteReducer(elements, action) {
     }
 
     case 'editBar':{
-      console.log(JSON.stringify(elements))
       return {
         navBar: elements.navBar,
         editBar: action.editBar,
@@ -130,7 +145,7 @@ function websiteReducer(elements, action) {
       }
     }
     case 'ArticleParameter': {
-      console.log(action)
+
       return {
         navBar: elements.navBar,
         editBar: { type: 'article' , article: action.article},
@@ -167,7 +182,7 @@ function websiteReducer(elements, action) {
     // Sub-article reducer
 
     case 'subArticleEdit': {
-      console.log(action.subArticle)
+
       return {
         navBar: elements.navBar,
         editBar: { type: 'subArticle', subArticle: action.subArticle, parentId: action.parentId },

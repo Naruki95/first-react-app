@@ -3,7 +3,6 @@ import SubArticle from './SubArticle.js'
 
 export default function Title() {
   const articlesContext = useWebsiteContext().articles
-  const dispatch = useWebsiteDispatchContext();
   const articlesPositionContext = useWebsiteContext().articlesPosition
   return (
     <div className={`${articlesPositionContext.position} w-100`}>
