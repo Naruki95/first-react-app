@@ -18,3 +18,7 @@
 .h1-right {
   justify-content: flex-end;
 }
+
+textarea{
+  width: 100%;
+}

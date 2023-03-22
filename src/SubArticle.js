@@ -11,8 +11,9 @@ export default function SubArticle({ parentId, subArticle }) {
     if (subArticle.imageUrl === null)
     {
       subArticleContent = (
-        <div className={`sub-article active`}>
-          <input
+        <div className={`sub-article active w-100`}>
+          <textarea
+            rows="5"
             className={`${subArticle.color} ${subArticle.size} ${subArticle.weight}`}
             value = {subArticle.text}
             onChange={e => {

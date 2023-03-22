@@ -369,6 +369,40 @@ function EditBarContent() {
               </button>
             </fieldset>
           </div>
+
+          <div className='main-content block-colors'>
+            <fieldset>
+              <legend>Template:</legend>
+              <div>
+                <button onClick={() => {
+                  dispatch({
+                    type: 'template',
+                    template: {
+                      navBar: [],
+                      body: {},
+                      editBar: { type: null },
+                      title: { text: 'Enter your title here', position: '', color: '', size: '' },
+                      articlesPosition: { position: '' },
+                      articles: [
+                        { id: 1, text: 'article 1', subArticles: [] },
+                        { id: 2, text: 'article 2', subArticles: [] }
+                      ]
+                    }
+                  });
+                }}>
+                  Reset from sratch
+                </button>
+                <br></br>
+                <button onClick={() => {
+                  dispatch({
+                    type: 'initOldTemplate',
+                  });
+                }}>
+                  Init old template
+                </button>
+              </div>
+            </fieldset>
+          </div>
         </div>
       </>
     )
@@ -1169,7 +1203,7 @@ function EditBarContent() {
 
           <div className='main-content'>
             <fieldset>
-              <legend>Article box:</legend>
+              <legend>Article new elements:</legend>
               <div className='side-elements'>
                 <fieldset className='block'>
                   <legend>New element</legend>
@@ -1184,30 +1218,6 @@ function EditBarContent() {
                       });
                     }}>
                       New sub article
-                    </button>
-
-                    <br></br>
-
-                    <button onClick={() => {
-                      dispatch({
-                        type: 'editBar',
-                        editBar: {
-                          type: null,
-                        }
-                      });
-                    }}>
-                      Save article
-                    </button>
-
-                    <br></br>
-
-                    <button onClick={() => {
-                      dispatch({
-                        type: 'deleted',
-                        id: article.id
-                      });
-                    }}>
-                      Delete article
                     </button>
                   </div>
                 </fieldset>
@@ -1280,10 +1290,37 @@ function EditBarContent() {
                       navBar: navBarContext.filter(t => t.articleId !== editBar.article.id)
                     });
                   }}>
-                    Delete article
+                    Delete nav-bar Tag
                   </button>
                 </fieldset>
               </div>
+            </fieldset>
+          </div>
+
+          <div className='main-content block-colors'>
+            <fieldset>
+              <legend>Article:</legend>
+              <button onClick={() => {
+                dispatch({
+                  type: 'editBar',
+                  editBar: {
+                    type: null,
+                  }
+                });
+              }}>
+                Save article
+              </button>
+
+              <br></br>
+
+              <button onClick={() => {
+                dispatch({
+                  type: 'deleted',
+                  id: article.id
+                });
+              }}>
+                Delete article
+              </button>
             </fieldset>
           </div>
         </div>
@@ -1772,7 +1809,7 @@ function EditBarContent() {
               <legend>Sub-article box:</legend>
               <div className='side-elements'>
                 <fieldset className='editBarTemplate'>
-                  <legend>sub-article width:</legend>
+                  <legend>Sub-article width:</legend>
                   <div>
                     <input
                       onClick={() => dispatch({
@@ -1950,7 +1987,7 @@ function EditBarContent() {
                 </fieldset>
 
                 <fieldset>
-                  <legend>sub-article width position:</legend>
+                  <legend>Sub-article width position:</legend>
                   <div>
                     <input
                       onClick={() => dispatch({
@@ -1987,7 +2024,7 @@ function EditBarContent() {
                   </div>
                 </fieldset>
                 <fieldset>
-                  <legend>Elements height position:</legend>
+                  <legend>Elements position:</legend>
                   <div>
                     <input
                       onClick={() => dispatch({
@@ -2021,23 +2058,6 @@ function EditBarContent() {
                       name="height Position"
                       value="default" />
                     <label for="default">Default</label>
-                  </div>
-
-                  <div>
-                    <input
-                      onClick={() => dispatch({
-                        type: 'subArticleEdit',
-                        parentId: editBar.parentId,
-                        subArticle: {
-                          ...subArticle,
-                          color: 'red'
-                        }
-                      })}
-                      type="radio"
-                      id="red"
-                      name="color"
-                      value="red" />
-                    <label for="red">red</label>
                   </div>
                 </fieldset>
               </div>
@@ -2078,329 +2098,377 @@ function EditBarContent() {
     else
     {
       editContent = (
-        <div className = 'side'>
+        <div className='side'>
+          <div className='main-content block-colors'>
+            <fieldset className='side'>
+              <legend>Image</legend>
+              <fieldset>
+                <legend>Height:</legend>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        height: 'img-height-50'
+                      }
+                    })}
+                    type="radio"
+                    id="img-height-50"
+                    name="height"
+                    value="img-height-50" />
+                  <label for="img-height-50">Small</label>
+                </div>
 
-          <fieldset>
-            <legend>Image height:</legend>
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    height: 'img-height-50'
-                  }
-                })}
-                type="radio"
-                id="img-height-50"
-                name="height"
-                value="img-height-50" />
-              <label for="img-height-50">small</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        height: 'img-height-200'
+                      }
+                    })}
+                    type="radio"
+                    id="img-height-200"
+                    name="height"
+                    value="img-height-200" />
+                  <label for="img-height-200">Middle</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    height: 'img-height-200'
-                  }
-                })}
-                type="radio"
-                id="img-height-200"
-                name="height"
-                value="img-height-200" />
-              <label for="img-height-200">middle</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        height: 'img-height-300'
+                      }
+                    })}
+                    type="radio"
+                    id="img-height-300"
+                    name="height"
+                    value="img-height-300" />
+                  <label for="img-height-300">Large</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    height: 'img-height-300'
-                  }
-                })}
-                type="radio"
-                id="img-height-300"
-                name="height"
-                value="img-height-300" />
-              <label for="img-height-300">large</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        height: ''
+                      }
+                    })}
+                    type="radio"
+                    id="default-height"
+                    name="height"
+                    value="100px" />
+                  <label for="default-height">Default</label>
+                </div>
+              </fieldset>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    height: ''
-                  }
-                })}
-                type="radio"
-                id="default-height"
-                name="height"
-                value="100px" />
-              <label for="default-height">default</label>
-            </div>
-          </fieldset>
+              <fieldset>
+                <legend>Width:</legend>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        width: 'img-width-50'
+                      }
+                    })}
+                    type="radio"
+                    id="img-width-50"
+                    name="width"
+                    value="img-width-50" />
+                  <label for="img-width-50">Small</label>
+                </div>
 
-          <fieldset>
-            <legend>Image width:</legend>
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    width: 'img-width-50'
-                  }
-                })}
-                type="radio"
-                id="img-width-50"
-                name="width"
-                value="img-width-50" />
-              <label for="img-width-50">small</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        width: 'img-width-200'
+                      }
+                    })}
+                    type="radio"
+                    id="img-width-200"
+                    name="width"
+                    value="img-width-200" />
+                  <label for="img-width-200">Middle</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    width: 'img-width-200'
-                  }
-                })}
-                type="radio"
-                id="img-width-200"
-                name="width"
-                value="img-width-200" />
-              <label for="img-width-200">middle</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        width: 'img-width-300'
+                      }
+                    })}
+                    type="radio"
+                    id="img-width-300"
+                    name="width"
+                    value="img-width-300" />
+                  <label for="img-width-300">Large</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    width: 'img-width-300'
-                  }
-                })}
-                type="radio"
-                id="img-width-300"
-                name="width"
-                value="img-width-300" />
-              <label for="img-width-300">large</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        width: ''
+                      }
+                    })}
+                    type="radio"
+                    id="default-width"
+                    name="width"
+                    value="100px" />
+                  <label for="default-width">Default</label>
+                </div>
+              </fieldset>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    width: ''
-                  }
-                })}
-                type="radio"
-                id="default-width"
-                name="width"
-                value="100px" />
-              <label for="default-width">default</label>
-            </div>
-          </fieldset>
+              <fieldset>
+                <legend>Image width position:</legend>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        widthPosition: 'image-width-position'
+                      }
+                    })}
+                    type="radio"
+                    id="w-center"
+                    name="width Position"
+                    value="center"
+                  />
+                  <label for="w-center">Center</label>
+                </div>
 
-          <fieldset>
-            <legend>Image fit:</legend>
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    fit: 'img-fill'
-                  }
-                })}
-                type="radio"
-                id="img-fill"
-                name="fit"
-                value="img-fill" />
-              <label for="img-fill">fill</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        widthPosition: ''
+                      }
+                    })}
+                    type="radio"
+                    id="default"
+                    name="width Position"
+                    value="default" />
+                  <label for="default">Default</label>
+                </div>
+              </fieldset>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    fit: 'img-contain'
-                  }
-                })}
-                type="radio"
-                id="img-contain"
-                name="fit"
-                value="img-contain" />
-              <label for="img-contain">contain</label>
-            </div>
+              <fieldset>
+                <legend>Fit:</legend>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        fit: 'img-fill'
+                      }
+                    })}
+                    type="radio"
+                    id="img-fill"
+                    name="fit"
+                    value="img-fill" />
+                  <label for="img-fill">Fill</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    fit: 'img-cover'
-                  }
-                })}
-                type="radio"
-                id="img-cover"
-                name="fit"
-                value="img-cover" />
-              <label for="img-cover">cover</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        fit: 'img-contain'
+                      }
+                    })}
+                    type="radio"
+                    id="img-contain"
+                    name="fit"
+                    value="img-contain" />
+                  <label for="img-contain">Contain</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    fit: ''
-                  }
-                })}
-                type="radio"
-                id="default-fit"
-                name="fit"
-                value="default-fit" />
-              <label for="default-fit">default</label>
-            </div>
-          </fieldset>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        fit: 'img-cover'
+                      }
+                    })}
+                    type="radio"
+                    id="img-cover"
+                    name="fit"
+                    value="img-cover" />
+                  <label for="img-cover">Cover</label>
+                </div>
 
-          <fieldset>
-            <legend>border radius:</legend>
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    imgRadius: 'img-radius-5'
-                  }
-                })}
-                type="radio"
-                id="img-radius-5"
-                name="img-radius"
-                value="img-radius-5" />
-              <label for="img-radius-5">img radius 5px</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        fit: ''
+                      }
+                    })}
+                    type="radio"
+                    id="default-cover"
+                    name="fit"
+                    value="default-cover" />
+                  <label for="default-cover">Default</label>
+                </div>
+              </fieldset>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    imgRadius: 'img-radius-10'
-                  }
-                })}
-                type="radio"
-                id="img-radius-10"
-                name="img-radius"
-                value="img-radius-10" />
-              <label for="img-radius-10">img radius 10px</label>
-            </div>
+              <fieldset>
+                <legend>Border Radius:</legend>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        imgRadius: 'img-radius-5'
+                      }
+                    })}
+                    type="radio"
+                    id="img-radius-5"
+                    name="img-radius"
+                    value="img-radius-5" />
+                  <label for="img-radius-5">Radius 5px</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    imgRadius: 'img-radius-25'
-                  }
-                })}
-                type="radio"
-                id="img-radius-25"
-                name="img-radius"
-                value="img-radius-25" />
-              <label for="img-radius-25">img radius 25%</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        imgRadius: 'img-radius-10'
+                      }
+                    })}
+                    type="radio"
+                    id="img-radius-10"
+                    name="img-radius"
+                    value="img-radius-10" />
+                  <label for="img-radius-10">Radius 10px</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    imgRadius: 'img-round'
-                  }
-                })}
-                type="radio"
-                id="img-radius-50"
-                name="img-radius"
-                value="img-radius-50" />
-              <label for="img-radius-50">img radius 50%</label>
-            </div>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        imgRadius: 'img-radius-25'
+                      }
+                    })}
+                    type="radio"
+                    id="img-radius-25"
+                    name="img-radius"
+                    value="img-radius-25" />
+                  <label for="img-radius-25">Radius 25%</label>
+                </div>
 
-            <div>
-              <input
-                onClick={() => dispatch({
-                  type: 'subArticleEdit',
-                  parentId: editBar.parentId,
-                  subArticle: {
-                    ...subArticle,
-                    imgRadius: ''
-                  }
-                })}
-                type="radio"
-                id="default-fit"
-                name="img-radius"
-                value="default-fit" />
-              <label for="default-fit">default</label>
-            </div>
-          </fieldset>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        imgRadius: 'img-round'
+                      }
+                    })}
+                    type="radio"
+                    id="img-radius-50"
+                    name="img-radius"
+                    value="img-radius-50" />
+                  <label for="img-radius-50">Radius 50%</label>
+                </div>
 
-          <button onClick={() => {
-            dispatch({
-              type: 'editBar',
-              editBar: {
-                type: null,
-              }
-            });
-          }}>
-            Save
-          </button>
+                <div>
+                  <input
+                    onClick={() => dispatch({
+                      type: 'subArticleEdit',
+                      parentId: editBar.parentId,
+                      subArticle: {
+                        ...subArticle,
+                        imgRadius: ''
+                      }
+                    })}
+                    type="radio"
+                    id="default-radius"
+                    name="img-radius"
+                    value="default-radius" />
+                  <label for="default-radius">Default</label>
+                </div>
+              </fieldset>
 
-          <button onClick={() => {
-            dispatch({
-              type: 'deleteSubArticle',
-              parentId: editBar.parentId,
-              id: subArticle.id
-            });
-          }}>
-            Delete
-          </button>
+              <fieldset>
+                <legend>Setting</legend>
+                <button onClick={() => {
+                  dispatch({
+                    type: 'editBar',
+                    editBar: {
+                      type: null,
+                    }
+                  });
+                }}>
+                  Save
+                </button>
+                <br></br>
+                <button onClick={() => {
+                  dispatch({
+                    type: 'deleteSubArticle',
+                    parentId: editBar.parentId,
+                    id: subArticle.id
+                  });
+                }}>
+                  Delete
+                </button>
+              </fieldset>
+
+
+            </fieldset>
+
+          </div>
         </div>
       )
     }

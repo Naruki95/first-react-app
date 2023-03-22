@@ -16,8 +16,6 @@ function Titre({ title }) {
       <>
         <div className={`side ${title.position}`}>
           <textarea
-            rows="1"
-            cols="33"
             className={`active-h1 ${title.color} ${title.size}`}
             value={title.text}
             onChange={e => dispatch({
