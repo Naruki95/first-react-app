@@ -10,14 +10,6 @@ export default function Title() {
     {articlesContext.map(article => (
       <Article article={article}/>
     ))}
-      <button onClick={() => dispatch({
-        type: 'editBar',
-        editBar: {
-          articlesContext
-        }
-      })}>
-      Click me
-    </button>
     </div>
   )
 }
