@@ -5,30 +5,48 @@ import { createContext, useContext, useReducer } from 'react';
 //   body: {text:'hehe'},
 //   editBar: {type: null},
 //   title: { text: 'Enter your title here', position: '', color: '', size: ''},
-//   articlesPosition: { position: ''},
+//   articlesPosition: { position: '' },
 //   articles: [
 //     {id: 1, text: 'article 1', subArticles: []},
 //     {id: 2, text: 'article 2', subArticles: []}
 //   ]
 // };
 
-const dumpState = { "navBar": [{ "id": 1, "articleId": 2, "text": "My Story", "tag": "#article-2" }, { "id": 2, "articleId": 4, "text": "Skills", "tag": "#article-4" }], "editBar": { "type": null }, "body": { "width": "w-1200", "position": "main-content-center", "contentBackgroundColor": "body-background-color-white" }, "title": { "text": "My dummy Portfolio", "position": "h1-center", "color": "gray", "size": "" }, "articlesPosition": { "position": "" }, "articles": [{ "id": 1, "text": "", "subArticles": [{ "id": 1, "text": "Hi There! I'm Julien Nguyen Junior fullstack developper! Open to work!  Here are my projects", "imageUrl": null, "heightPosition": "sub-article-height-center", "color": "gray", "size": "medium", "weight": "bold", "width": "w-30" }, { "id": 2, "text": "Julien", "imageUrl": "https://media.licdn.com/dms/image/D4E35AQGVzZBE7qg4xw/profile-framedphoto-shrink_400_400/0/1672916388529?e=1680526800&v=beta&t=gQ3zFDGRH0EJPYy1Maij-diQXDK7cgtny-cM_IbZYZM", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-round" }], "position": "elements_by_side", "justifyContent": "space-around", "width": "w-100", "ArticlePosition": "article-box-position-center", "ArticleTitlePosition": "sub-article-height-center" }, { "id": 2, "text": "_____________________________________________________________________________________________", "subArticles": [], "ArticleTitlePosition": "sub-article-height-center" }, { "id": 3, "text": "My Story", "subArticles": [{ "id": 1, "text": "I worked as quality engineer for 4 years at Horiba. As long as I am learning new stuffs I enjoyed my life. At the end, I was able to know everything about my job and I am getting bored at this moment.. And the pandemic arrived, I felt like my life became more redundant and emptier. I remembered I enjoyed having computing lessons at School, and I really like solving problems and do things very interesting!", "imageUrl": null, "heightPosition": "sub-article-height-center", "weight": "bold", "size": "medium", "color": "gray", "width": "w-70", "widthPosition": "sub-article-width-center" }, { "id": 2, "text": "I left my job to start a new life to become a fullstack web developper with \"Le Wagon\". I learned how to code entirely a website by using Ruby on Rails for the back-end, Stimulus for the front-end.", "imageUrl": null, "color": "gray", "size": "medium", "weight": "bold", "width": "w-70", "heightPosition": "sub-article-height-center", "widthPosition": "sub-article-width-center" }, { "id": 3, "text": "Now I'm learning some new techs to be more versatile as React, Redux/React and I am hoping getting a job soon!", "imageUrl": null, "color": "gray", "size": "medium", "weight": "bold", "widthPosition": "sub-article-width-center", "heightPosition": "sub-article-height-center" }, { "id": 4, "text": "My dream would be to become a software engineer! I will do my best to reach my goal!", "imageUrl": null, "color": "gray", "size": "medium", "weight": "bold", "widthPosition": "sub-article-width-center", "heightPosition": "sub-article-height-center" }], "ArticleTitlePosition": "sub-article-height-center", "weight": "bold", "size": "larger", "color": "gray" }, { "id": 4, "text": "_____________________________________________________________________________________________", "subArticles": [], "ArticleTitlePosition": "sub-article-height-center" }, { "id": 5, "text": "Skills", "subArticles": [{ "id": 1, "text": "Rails", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 2, "text": "Ruby", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg", "height": "img-height-200", "width": "img-width-200", "fit": "" }, { "id": 3, "text": "React", "imageUrl": "https://www.tekoway.com/wp-content/uploads/2017/05/react-logo.png", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 4, "text": "JS", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg", "height": "img-height-200", "width": "img-width-200", "fit": "", "imgRadius": "img-radius-10" }, { "id": 5, "text": "HTML", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 6, "text": "CSS", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 7, "text": "Node JS", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg", "height": "img-height-200", "width": "img-width-200" }, { "id": 8, "text": "Postgresql", "imageUrl": "https://wiki.postgresql.org/images/9/9a/PostgreSQL_logo.3colors.540x557.png", "height": "img-height-200", "width": "img-width-200" }, { "id": 9, "text": "MySQL", "imageUrl": "https://www.mysql.com/common/logos/logo-mysql-170x115.png", "height": "img-height-200", "width": "img-width-200" }, { "id": 10, "text": "Docker", "imageUrl": "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png", "height": "img-height-200", "width": "img-width-200" }, { "id": 11, "text": "GH", "imageUrl": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png", "height": "img-height-200", "width": "img-width-200" }], "color": "gray", "weight": "bold", "size": "larger", "ArticleTitlePosition": "sub-article-height-center", "position": "elements_by_side", "justifyContent": "space-center", "width": "w-90", "ArticlePosition": "article-box-position-center" }, { "id": 6, "text": "new article with ID: 6", "subArticles": [] }] };
+const newState = {
+  navBar: [],
+  editBar: { type: null },
+  body: { width: 'w-1200', position: 'main-content-center', bodyBackgroundColor: 'body-background-color-red', contentBackgroundColor: 'body-background-color-white' },
+  title: { text: 'READ ME', position: 'h1-center', color: 'red', size: '' },
+  articlesPosition: { position: '' },
+  articles: [
+    { id: 1, text: 'This website is made with React, most likely UseState and UseContext.', subArticles: [], width: 'w-80', ArticlePosition: 'article-box-position-center', ArticleTitlePosition: "sub-article-height-center", color: "red", size: "", weight: "bold" },
+    { ArticlePosition: "article-box-position-center", ArticleTitlePosition: "sub-article-height-center", color: "red", id: 2, size: "larger", subArticles: [], text: "This is a no code App I tried to make, basically you can do an easy single page without any knowledge about coding.", weight: "bold", width: "w-80"},
+    { ArticleTitlePosition: "sub-article-height-center", color: "red", id: 3, size: "", subArticles:[], text:"How to use it:", weight:"bold" },
+    { ArticlePosition: "article-box-position-center", id: 4, justifyContent: "space-between", position: "elements_by_side", subArticles: [{ color: "red", heightPosition: "sub-article-height-center", id: 1, imageUrl: null, size: "larger", text: "Double Click on an element to custom it", weight: "bold", width: "w-20", widthPosition: "" }, { color: "red", heightPosition: "sub-article-height-center", id: 2, imageUrl: null, size: "larger", text: "Double Click anywhere to make the edit Bar to pop up", weight: "bold", width: "w-20" }, { color: "red", heightPosition: "sub-article-height-center", id: 3, imageUrl: null, size: "larger", text: "\nIf you want to delete elements, you can click on the delete element in the edit Bar", weight: "bold", width: "w-20" } ], text:"", width: "w-80" },
+    { ArticleTitlePosition: "sub-article-height-center", id: 5, subArticles: [], text: "________________________________" },
+    { ArticlePosition: "article-box-position-center", id: 6, justifyContent: "space-between", position: "elements_by_side", subArticles: [{ fit: "img-fill", height: "img-height-200", id: 1, imageUrl: "https://www.kanpai.fr/sites/default/files/styles/big_header_lg/public/naruto-tag.jpg", imgRadius: "img-round", text: "Naruto", width: "img-width-200", widthPosition: "image-width-position" }, { color: "red", heightPosition: "sub-article-height-center", id: 2, imageUrl: null, size: "", text: "I made an Example if you want to have a template in the edit Bar", weight: "bold", width: "w-30", widthPosition: "sub-article-width-center" }, { color: "blue", heightPosition: "sub-article-height-center", id: 3, imageUrl: null, size: "", text: "You can also custom the text color, position and space they can take on the page", weight: "bold", width: "w-20", widthPosition: "" }], text: "Particularity:", width: "w-80", weight: "bold" },
+    { ArticleTitlePosition: "sub-article-height-center", id: 7, subArticles: [], text: "________________________________" },
+    { ArticleTitlePosition: "sub-article-height-center", color: "red", height: "h-20", id: 8, size:"", subArticles: [], text: "Give a try ! Good Luck !", weight: "bold" }
+  ]
+}
+
+const dumpState = { "navBar": [{ "id": 1, "articleId": 2, "text": "My Story", "tag": "#article-2" }, { "id": 2, "articleId": 4, "text": "Skills", "tag": "#article-4" }], "editBar": { "type": null }, "body": { "width": "w-1200", "position": "main-content-center", "contentBackgroundColor": "body-background-color-white" }, "title": { "text": "My dummy Portfolio", "position": "h1-center", "color": "gray", "size": "" }, "articlesPosition": { "position": "" }, "articles": [{ "id": 1, "text": "", "subArticles": [{ "id": 1, "text": "Hi There! I'm Julien Nguyen Junior fullstack developper! Open to work!  Here are my projects", "imageUrl": null, "heightPosition": "sub-article-height-center", "color": "gray", "size": "medium", "weight": "bold", "width": "w-30" }, { "id": 2, "text": "Julien", "imageUrl": "https://www.kanpai.fr/sites/default/files/styles/big_header_lg/public/naruto-tag.jpg", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-round" }], "position": "elements_by_side", "justifyContent": "space-around", "width": "w-100", "ArticlePosition": "article-box-position-center", "ArticleTitlePosition": "sub-article-height-center" }, { "id": 2, "text": "_____________________________________________________________________________________________", "subArticles": [], "ArticleTitlePosition": "sub-article-height-center" }, { "id": 3, "text": "My Story", "subArticles": [{ "id": 1, "text": "I worked as quality engineer for 4 years at Horiba. As long as I am learning new stuffs I enjoyed my life. At the end, I was able to know everything about my job and I am getting bored at this moment.. And the pandemic arrived, I felt like my life became more redundant and emptier. I remembered I enjoyed having computing lessons at School, and I really like solving problems and do things very interesting!", "imageUrl": null, "heightPosition": "sub-article-height-center", "weight": "bold", "size": "medium", "color": "gray", "width": "w-70", "widthPosition": "sub-article-width-center" }, { "id": 2, "text": "I left my job to start a new life to become a fullstack web developper with \"Le Wagon\". I learned how to code entirely a website by using Ruby on Rails for the back-end, Stimulus for the front-end.", "imageUrl": null, "color": "gray", "size": "medium", "weight": "bold", "width": "w-70", "heightPosition": "sub-article-height-center", "widthPosition": "sub-article-width-center" }, { "id": 3, "text": "Now I'm learning some new techs to be more versatile as React, Redux/React and I am hoping getting a job soon!", "imageUrl": null, "color": "gray", "size": "medium", "weight": "bold", "widthPosition": "sub-article-width-center", "heightPosition": "sub-article-height-center" }, { "id": 4, "text": "My dream would be to become a software engineer! I will do my best to reach my goal!", "imageUrl": null, "color": "gray", "size": "medium", "weight": "bold", "widthPosition": "sub-article-width-center", "heightPosition": "sub-article-height-center" }], "ArticleTitlePosition": "sub-article-height-center", "weight": "bold", "size": "larger", "color": "gray" }, { "id": 4, "text": "_____________________________________________________________________________________________", "subArticles": [], "ArticleTitlePosition": "sub-article-height-center" }, { "id": 5, "text": "Skills", "subArticles": [{ "id": 1, "text": "Rails", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 2, "text": "Ruby", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg", "height": "img-height-200", "width": "img-width-200", "fit": "" }, { "id": 3, "text": "React", "imageUrl": "https://www.tekoway.com/wp-content/uploads/2017/05/react-logo.png", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 4, "text": "JS", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg", "height": "img-height-200", "width": "img-width-200", "fit": "", "imgRadius": "img-radius-10" }, { "id": 5, "text": "HTML", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 6, "text": "CSS", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg", "height": "img-height-200", "width": "img-width-200", "imgRadius": "img-radius-10" }, { "id": 7, "text": "Node JS", "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg", "height": "img-height-200", "width": "img-width-200" }, { "id": 8, "text": "Postgresql", "imageUrl": "https://wiki.postgresql.org/images/9/9a/PostgreSQL_logo.3colors.540x557.png", "height": "img-height-200", "width": "img-width-200" }, { "id": 9, "text": "MySQL", "imageUrl": "https://www.mysql.com/common/logos/logo-mysql-170x115.png", "height": "img-height-200", "width": "img-width-200" }, { "id": 10, "text": "Docker", "imageUrl": "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png", "height": "img-height-200", "width": "img-width-200" }, { "id": 11, "text": "GH", "imageUrl": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png", "height": "img-height-200", "width": "img-width-200" }], "color": "gray", "weight": "bold", "size": "larger", "ArticleTitlePosition": "sub-article-height-center", "position": "elements_by_side", "justifyContent": "space-center", "width": "w-90", "ArticlePosition": "article-box-position-center" }, { "id": 6, "text": "new article with ID: 6", "subArticles": [] }] };
 const WebsiteContext = createContext(null);
 const WebsiteDispatchContext = createContext(null)
 
-function storage() {
-  if(window.localStorage.length === 0)
-  {
-    return dumpState
-  }
-  else
-  {
-    return JSON.parse(window.localStorage.template)
-  }
-}
+// function storage() {
+  // if(window.localStorage.length === 0)
+  // {
+  //  return dumpState
+  // }
+  // else
+  // {
+  //   return JSON.parse(window.localStorage.template)
+  // }
+// }
 
 export function AppContext({ children }) {
-  const state = storage()
+  const state = newState
   const [elements, dispatch] = useReducer(websiteReducer, state)
   return (
     <WebsiteContext.Provider value={elements}>
@@ -60,7 +78,7 @@ function websiteReducer(elements, action) {
     }
 
     case 'initOldTemplate': {
-      window.localStorage.clear()
+      // window.localStorage.clear()
       return {
         ...dumpState,
         editBar: {type: null}
@@ -68,6 +86,11 @@ function websiteReducer(elements, action) {
     }
 
     case 'editBar':{
+      console.log(elements.body)
+      console.log(elements.title)
+      console.log(elements.articlesPosition)
+      console.log(elements.articles)
+
       return {
         navBar: elements.navBar,
         editBar: action.editBar,

@@ -376,16 +376,6 @@ function EditBarContent() {
               <div>
                 <button onClick={() => {
                   dispatch({
-                    type: 'saveUserTemplate',
-                  });
-                }}>
-                  Save your template
-                </button>
-
-                <br></br>
-
-                <button onClick={() => {
-                  dispatch({
                     type: 'template',
                     template: {
                       navBar: [],
